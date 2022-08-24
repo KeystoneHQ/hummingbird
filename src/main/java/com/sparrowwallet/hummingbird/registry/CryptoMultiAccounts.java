@@ -1,10 +1,4 @@
-package com.sparrowwallet.hummingbird.registry.solana;
-
-import com.sparrowwallet.hummingbird.registry.CryptoAccount;
-import com.sparrowwallet.hummingbird.registry.CryptoHDKey;
-import com.sparrowwallet.hummingbird.registry.CryptoOutput;
-import com.sparrowwallet.hummingbird.registry.RegistryItem;
-import com.sparrowwallet.hummingbird.registry.RegistryType;
+package com.sparrowwallet.hummingbird.registry;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
