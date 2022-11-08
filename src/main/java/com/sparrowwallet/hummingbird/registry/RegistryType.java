@@ -2,6 +2,8 @@ package com.sparrowwallet.hummingbird.registry;
 
 import com.sparrowwallet.hummingbird.registry.aptos.AptosSignRequest;
 import com.sparrowwallet.hummingbird.registry.aptos.AptosSignature;
+import com.sparrowwallet.hummingbird.registry.cosmos.CosmosSignRequest;
+import com.sparrowwallet.hummingbird.registry.cosmos.CosmosSignature;
 import com.sparrowwallet.hummingbird.registry.near.NearSignRequest;
 import com.sparrowwallet.hummingbird.registry.near.NearSignature;
 import com.sparrowwallet.hummingbird.registry.solana.SolNFTItem;
@@ -46,7 +48,10 @@ public enum RegistryType {
     NEAR_SIGNATURE("near-signature", 2102, NearSignature.class),
 
     APTOS_SIGN_REQUEST("aptos-sign-request", 3101, AptosSignRequest.class),
-    APTOS_SIGNATURE("aptos-signature", 3102, AptosSignature.class);
+    APTOS_SIGNATURE("aptos-signature", 3102, AptosSignature.class),
+
+    COSMOS_SIGN_REQUEST("cosmos-sign-request", 4101, CosmosSignRequest.class),
+    COSMOS_SIGNATURE("cosmos-signature", 4102, CosmosSignature.class);
 
     private final String type;
     private final Integer tag;

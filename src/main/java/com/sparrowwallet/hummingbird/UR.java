@@ -9,6 +9,8 @@ import co.nstant.in.cbor.model.DataItem;
 import com.sparrowwallet.hummingbird.registry.*;
 import com.sparrowwallet.hummingbird.registry.aptos.AptosSignRequest;
 import com.sparrowwallet.hummingbird.registry.aptos.AptosSignature;
+import com.sparrowwallet.hummingbird.registry.cosmos.CosmosSignRequest;
+import com.sparrowwallet.hummingbird.registry.cosmos.CosmosSignature;
 import com.sparrowwallet.hummingbird.registry.near.NearSignRequest;
 import com.sparrowwallet.hummingbird.registry.near.NearSignature;
 import com.sparrowwallet.hummingbird.registry.CryptoMultiAccounts;
@@ -106,6 +108,10 @@ public class UR {
                 return AptosSignRequest.fromCbor(item);
             } else if (registryType == RegistryType.APTOS_SIGNATURE) {
                 return AptosSignature.fromCbor(item);
+            } else if (registryType == RegistryType.COSMOS_SIGN_REQUEST) {
+                return CosmosSignRequest.fromCbor(item);
+            } else if (registryType == RegistryType.COSMOS_SIGNATURE) {
+                return CosmosSignature.fromCbor(item);
             }
         } catch (CborException e) {
             throw new InvalidCBORException(e.getMessage());
