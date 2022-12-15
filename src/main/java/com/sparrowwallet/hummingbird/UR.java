@@ -6,9 +6,13 @@ import co.nstant.in.cbor.CborEncoder;
 import co.nstant.in.cbor.CborException;
 import co.nstant.in.cbor.model.ByteString;
 import co.nstant.in.cbor.model.DataItem;
+
 import com.sparrowwallet.hummingbird.registry.*;
 import com.sparrowwallet.hummingbird.registry.aptos.AptosSignRequest;
 import com.sparrowwallet.hummingbird.registry.aptos.AptosSignature;
+import com.sparrowwallet.hummingbird.registry.arweave.ArweaveCryptoAccount;
+import com.sparrowwallet.hummingbird.registry.arweave.ArweaveSignRequest;
+import com.sparrowwallet.hummingbird.registry.arweave.ArweaveSignature;
 import com.sparrowwallet.hummingbird.registry.cosmos.CosmosSignRequest;
 import com.sparrowwallet.hummingbird.registry.cosmos.CosmosSignature;
 import com.sparrowwallet.hummingbird.registry.near.NearSignRequest;
@@ -112,6 +116,12 @@ public class UR {
                 return CosmosSignRequest.fromCbor(item);
             } else if (registryType == RegistryType.COSMOS_SIGNATURE) {
                 return CosmosSignature.fromCbor(item);
+            } else if (registryType == RegistryType.ARWEAVE_CRYPTO_ACCOUNT) {
+                return ArweaveCryptoAccount.fromCbor(item);
+            } else if (registryType == RegistryType.ARWEAVE_SIGN_REQUEST) {
+                return ArweaveSignRequest.fromCbor(item);
+            } else if (registryType == RegistryType.ARWEAVE_SIGNATURE) {
+                return ArweaveSignature.fromCbor(item);
             }
         } catch (CborException e) {
             throw new InvalidCBORException(e.getMessage());
