@@ -2,6 +2,9 @@ package com.sparrowwallet.hummingbird.registry;
 
 import com.sparrowwallet.hummingbird.registry.aptos.AptosSignRequest;
 import com.sparrowwallet.hummingbird.registry.aptos.AptosSignature;
+import com.sparrowwallet.hummingbird.registry.arweave.ArweaveCryptoAccount;
+import com.sparrowwallet.hummingbird.registry.arweave.ArweaveSignRequest;
+import com.sparrowwallet.hummingbird.registry.arweave.ArweaveSignature;
 import com.sparrowwallet.hummingbird.registry.cosmos.CosmosSignRequest;
 import com.sparrowwallet.hummingbird.registry.cosmos.CosmosSignature;
 import com.sparrowwallet.hummingbird.registry.near.NearSignRequest;
@@ -51,7 +54,11 @@ public enum RegistryType {
     APTOS_SIGNATURE("aptos-signature", 3102, AptosSignature.class),
 
     COSMOS_SIGN_REQUEST("cosmos-sign-request", 4101, CosmosSignRequest.class),
-    COSMOS_SIGNATURE("cosmos-signature", 4102, CosmosSignature.class);
+    COSMOS_SIGNATURE("cosmos-signature", 4102, CosmosSignature.class),
+
+    ARWEAVE_CRYPTO_ACCOUNT("arweave-crypto-account", 5101, ArweaveCryptoAccount.class),
+    ARWEAVE_SIGN_REQUEST("arweave-sign-request", 5102, ArweaveSignRequest.class),
+    ARWEAVE_SIGNATURE("arweave-signature", 5103, ArweaveSignature.class);
 
     private final String type;
     private final Integer tag;
