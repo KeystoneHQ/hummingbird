@@ -99,6 +99,34 @@ public class ArweaveSignRequest extends RegistryItem {
         return RegistryType.ARWEAVE_SIGN_REQUEST;
     }
 
+    public byte[] getMasterFingerprint() {
+        return masterFingerprint;
+    }
+
+    public byte[] getRequestId() {
+        return requestId;
+    }
+
+    public byte[] getSignData() {
+        return signData;
+    }
+
+    public SignType getSignType() {
+        return signType;
+    }
+
+    public SaltLen getSaltLen() {
+        return saltLen;
+    }
+
+    public String getOrigin() {
+        return origin;
+    }
+
+    public byte[] getAccount() {
+        return account;
+    }
+
     public enum SignType {
         TRANSACTION("Transaction", 1),
         DATAITEM("DataItem", 2),
