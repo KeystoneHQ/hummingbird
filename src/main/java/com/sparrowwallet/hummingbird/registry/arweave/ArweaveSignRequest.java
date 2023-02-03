@@ -4,6 +4,7 @@ import com.sparrowwallet.hummingbird.registry.RegistryItem;
 import com.sparrowwallet.hummingbird.registry.RegistryType;
 
 import java.math.BigInteger;
+import java.util.Arrays;
 
 import co.nstant.in.cbor.model.ByteString;
 import co.nstant.in.cbor.model.DataItem;
@@ -71,7 +72,8 @@ public class ArweaveSignRequest extends RegistryItem {
             UnsignedInteger uintKey = (UnsignedInteger) key;
             int intKey = uintKey.getValue().intValue();
             if (intKey == MASTER_FINGERPRINT) {
-                masterFingerprint = ((UnsignedInteger) map.get(uintKey)).getValue().toByteArray();
+                byte[] mfp = ((UnsignedInteger) map.get(uintKey)).getValue().toByteArray();
+                masterFingerprint = Arrays.copyOfRange(mfp, mfp.length - 4, mfp.length);
             } else if (intKey == REQUEST_ID) {
                 requestId = ((ByteString) map.get(uintKey)).getBytes();
             } else if (intKey == SIGN_DATA) {
