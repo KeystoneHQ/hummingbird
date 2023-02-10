@@ -15,6 +15,8 @@ import com.sparrowwallet.hummingbird.registry.arweave.ArweaveSignRequest;
 import com.sparrowwallet.hummingbird.registry.arweave.ArweaveSignature;
 import com.sparrowwallet.hummingbird.registry.cosmos.CosmosSignRequest;
 import com.sparrowwallet.hummingbird.registry.cosmos.CosmosSignature;
+import com.sparrowwallet.hummingbird.registry.evm.EvmSignRequest;
+import com.sparrowwallet.hummingbird.registry.evm.EvmSignature;
 import com.sparrowwallet.hummingbird.registry.near.NearSignRequest;
 import com.sparrowwallet.hummingbird.registry.near.NearSignature;
 import com.sparrowwallet.hummingbird.registry.CryptoMultiAccounts;
@@ -122,6 +124,10 @@ public class UR {
                 return ArweaveSignRequest.fromCbor(item);
             } else if (registryType == RegistryType.ARWEAVE_SIGNATURE) {
                 return ArweaveSignature.fromCbor(item);
+            } else if (registryType == RegistryType.EVM_SIGN_REQUEST) {
+                return EvmSignRequest.fromCbor(item);
+            } else if (registryType == RegistryType.EVM_SIGNATURE) {
+                return EvmSignature.fromCbor(item);
             }
         } catch (CborException e) {
             throw new InvalidCBORException(e.getMessage());
