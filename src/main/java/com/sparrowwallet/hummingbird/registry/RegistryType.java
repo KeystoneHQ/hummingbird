@@ -7,6 +7,8 @@ import com.sparrowwallet.hummingbird.registry.arweave.ArweaveSignRequest;
 import com.sparrowwallet.hummingbird.registry.arweave.ArweaveSignature;
 import com.sparrowwallet.hummingbird.registry.cosmos.CosmosSignRequest;
 import com.sparrowwallet.hummingbird.registry.cosmos.CosmosSignature;
+import com.sparrowwallet.hummingbird.registry.evm.EvmSignRequest;
+import com.sparrowwallet.hummingbird.registry.evm.EvmSignature;
 import com.sparrowwallet.hummingbird.registry.near.NearSignRequest;
 import com.sparrowwallet.hummingbird.registry.near.NearSignature;
 import com.sparrowwallet.hummingbird.registry.solana.SolNFTItem;
@@ -58,7 +60,10 @@ public enum RegistryType {
 
     ARWEAVE_CRYPTO_ACCOUNT("arweave-crypto-account", 5101, ArweaveCryptoAccount.class),
     ARWEAVE_SIGN_REQUEST("arweave-sign-request", 5102, ArweaveSignRequest.class),
-    ARWEAVE_SIGNATURE("arweave-signature", 5103, ArweaveSignature.class);
+    ARWEAVE_SIGNATURE("arweave-signature", 5103, ArweaveSignature.class),
+    EVM_SIGN_REQUEST("evm-sign-request",6101, EvmSignRequest.class),
+    EVM_SIGNATURE("evm-signature",6102, EvmSignature.class);
+
 
     private final String type;
     private final Integer tag;
