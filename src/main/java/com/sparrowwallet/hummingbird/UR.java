@@ -23,6 +23,8 @@ import com.sparrowwallet.hummingbird.registry.CryptoMultiAccounts;
 import com.sparrowwallet.hummingbird.registry.solana.SolNFTItem;
 import com.sparrowwallet.hummingbird.registry.solana.SolSignRequest;
 import com.sparrowwallet.hummingbird.registry.solana.SolSignature;
+import com.sparrowwallet.hummingbird.registry.sui.SuiSignRequest;
+import com.sparrowwallet.hummingbird.registry.sui.SuiSignature;
 
 import java.io.ByteArrayOutputStream;
 import java.util.Arrays;
@@ -128,6 +130,10 @@ public class UR {
                 return EvmSignRequest.fromCbor(item);
             } else if (registryType == RegistryType.EVM_SIGNATURE) {
                 return EvmSignature.fromCbor(item);
+            } else if (registryType == RegistryType.SUI_SIGN_REQUEST) {
+                return SuiSignRequest.fromCbor(item);
+            } else if (registryType == RegistryType.SUI_SIGNATURE) {
+                return SuiSignature.fromCbor(item);
             }
         } catch (CborException e) {
             throw new InvalidCBORException(e.getMessage());

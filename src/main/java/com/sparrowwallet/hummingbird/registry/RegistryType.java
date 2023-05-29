@@ -14,6 +14,8 @@ import com.sparrowwallet.hummingbird.registry.near.NearSignature;
 import com.sparrowwallet.hummingbird.registry.solana.SolNFTItem;
 import com.sparrowwallet.hummingbird.registry.solana.SolSignRequest;
 import com.sparrowwallet.hummingbird.registry.solana.SolSignature;
+import com.sparrowwallet.hummingbird.registry.sui.SuiSignRequest;
+import com.sparrowwallet.hummingbird.registry.sui.SuiSignature;
 
 public enum RegistryType {
     BYTES("bytes", null, byte[].class),
@@ -54,6 +56,9 @@ public enum RegistryType {
 
     APTOS_SIGN_REQUEST("aptos-sign-request", 3101, AptosSignRequest.class),
     APTOS_SIGNATURE("aptos-signature", 3102, AptosSignature.class),
+
+    SUI_SIGN_REQUEST("sui-sign-request", 7101, SuiSignRequest.class),
+    SUI_SIGNATURE("sui-signature", 7102, SuiSignature.class),
 
     COSMOS_SIGN_REQUEST("cosmos-sign-request", 4101, CosmosSignRequest.class),
     COSMOS_SIGNATURE("cosmos-signature", 4102, CosmosSignature.class),
