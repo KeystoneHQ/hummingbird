@@ -9,6 +9,9 @@ import com.sparrowwallet.hummingbird.registry.cosmos.CosmosSignRequest;
 import com.sparrowwallet.hummingbird.registry.cosmos.CosmosSignature;
 import com.sparrowwallet.hummingbird.registry.evm.EvmSignRequest;
 import com.sparrowwallet.hummingbird.registry.evm.EvmSignature;
+import com.sparrowwallet.hummingbird.registry.extend.KeyDerivationCall;
+import com.sparrowwallet.hummingbird.registry.extend.KeyDerivationSchema;
+import com.sparrowwallet.hummingbird.registry.extend.QRHardwareCall;
 import com.sparrowwallet.hummingbird.registry.near.NearSignRequest;
 import com.sparrowwallet.hummingbird.registry.near.NearSignature;
 import com.sparrowwallet.hummingbird.registry.solana.SolNFTItem;
@@ -42,14 +45,18 @@ public enum RegistryType {
     CRYPTO_ACCOUNT("crypto-account", 311, CryptoAccount.class),
 
     // self-defined-type
-    ETH_SIGN_REQUEST("eth-sign-request",401, EthSignRequest.class),
-    ETH_SIGNATURE("eth-signature",402, EthSignature.class),
-    ETH_NFT_ITEM("eth-nft-item",403, EthNFTItem.class),
+    ETH_SIGN_REQUEST("eth-sign-request", 401, EthSignRequest.class),
+    ETH_SIGNATURE("eth-signature", 402, EthSignature.class),
+    ETH_NFT_ITEM("eth-nft-item", 403, EthNFTItem.class),
 
     SOL_SIGN_REQUEST("sol-sign-request", 1101, SolSignRequest.class),
     SOL_SIGNATURE("sol-signature", 1102, SolSignature.class),
     CRYPTO_MULTI_ACCOUNTS("crypto-multi-accounts", 1103, CryptoMultiAccounts.class),
-    SOL_NFT_ITEM("sol-nft-item",1104, SolNFTItem.class),
+    SOL_NFT_ITEM("sol-nft-item", 1104, SolNFTItem.class),
+
+    QR_HARDWARE_CALL("qr-hardware-call", 1201, QRHardwareCall.class),
+    KEY_DERIVATION_CALL("key-derivation-call", 1301, KeyDerivationCall.class),
+    KEY_DERIVATION_SCHEMA("key-derivation-schema", 1302, KeyDerivationSchema.class),
 
     NEAR_SIGN_REQUEST("near-sign-request", 2101, NearSignRequest.class),
     NEAR_SIGNATURE("near-signature", 2102, NearSignature.class),
@@ -66,8 +73,8 @@ public enum RegistryType {
     ARWEAVE_CRYPTO_ACCOUNT("arweave-crypto-account", 5101, ArweaveCryptoAccount.class),
     ARWEAVE_SIGN_REQUEST("arweave-sign-request", 5102, ArweaveSignRequest.class),
     ARWEAVE_SIGNATURE("arweave-signature", 5103, ArweaveSignature.class),
-    EVM_SIGN_REQUEST("evm-sign-request",6101, EvmSignRequest.class),
-    EVM_SIGNATURE("evm-signature",6102, EvmSignature.class);
+    EVM_SIGN_REQUEST("evm-sign-request", 6101, EvmSignRequest.class),
+    EVM_SIGNATURE("evm-signature", 6102, EvmSignature.class);
 
 
     private final String type;
@@ -98,8 +105,8 @@ public enum RegistryType {
     }
 
     public static RegistryType fromString(String type) {
-        for(RegistryType registryType : values()) {
-            if(registryType.toString().equals(type.toLowerCase())) {
+        for (RegistryType registryType : values()) {
+            if (registryType.toString().equals(type.toLowerCase())) {
                 return registryType;
             }
         }
