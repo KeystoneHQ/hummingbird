@@ -17,6 +17,9 @@ import com.sparrowwallet.hummingbird.registry.cosmos.CosmosSignRequest;
 import com.sparrowwallet.hummingbird.registry.cosmos.CosmosSignature;
 import com.sparrowwallet.hummingbird.registry.evm.EvmSignRequest;
 import com.sparrowwallet.hummingbird.registry.evm.EvmSignature;
+import com.sparrowwallet.hummingbird.registry.extend.KeyDerivationCall;
+import com.sparrowwallet.hummingbird.registry.extend.KeyDerivationSchema;
+import com.sparrowwallet.hummingbird.registry.extend.QRHardwareCall;
 import com.sparrowwallet.hummingbird.registry.near.NearSignRequest;
 import com.sparrowwallet.hummingbird.registry.near.NearSignature;
 import com.sparrowwallet.hummingbird.registry.CryptoMultiAccounts;
@@ -134,6 +137,12 @@ public class UR {
                 return SuiSignRequest.fromCbor(item);
             } else if (registryType == RegistryType.SUI_SIGNATURE) {
                 return SuiSignature.fromCbor(item);
+            } else if (registryType == RegistryType.QR_HARDWARE_CALL) {
+                return QRHardwareCall.fromCbor(item);
+            } else if (registryType == RegistryType.KEY_DERIVATION_CALL) {
+                return KeyDerivationCall.fromCbor(item);
+            } else if (registryType == RegistryType.KEY_DERIVATION_SCHEMA) {
+                return KeyDerivationSchema.fromCbor(item);
             }
         } catch (CborException e) {
             throw new InvalidCBORException(e.getMessage());
