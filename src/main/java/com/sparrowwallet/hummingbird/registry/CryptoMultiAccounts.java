@@ -14,21 +14,32 @@ public class CryptoMultiAccounts extends RegistryItem {
     public static final int MASTER_FINGERPRINT = 1;
     public static final int KEYS = 2;
     public static final int ORIGIN = 3;
+    public static final int DEVICE_ID = 4;
 
     private final byte[] masterFingerprint;
     private final List<CryptoHDKey> keys;
     private final String origin;
+    private final String deviceId;
 
     public CryptoMultiAccounts(byte[] masterFingerprint, List<CryptoHDKey> keys) {
         this.masterFingerprint = masterFingerprint;
         this.keys = keys;
         this.origin = null;
+        this.deviceId = null;
     }
 
     public CryptoMultiAccounts(byte[] masterFingerprint, List<CryptoHDKey> keys, String origin) {
         this.masterFingerprint = masterFingerprint;
         this.keys = keys;
         this.origin = origin;
+        this.deviceId = null;
+    }
+
+    public CryptoMultiAccounts(byte[] masterFingerprint, List<CryptoHDKey> keys, String origin, String deviceId) {
+        this.masterFingerprint = masterFingerprint;
+        this.keys = keys;
+        this.origin = origin;
+        this.deviceId = deviceId;
     }
 
     public byte[] getMasterFingerprint() {
@@ -37,6 +48,10 @@ public class CryptoMultiAccounts extends RegistryItem {
 
     public String getOrigin() {
         return origin;
+    }
+
+    public String getDeviceId() {
+        return deviceId;
     }
 
     public List<CryptoHDKey> getKeys() {
@@ -57,12 +72,16 @@ public class CryptoMultiAccounts extends RegistryItem {
         if (origin != null) {
             map.put(new UnsignedInteger(ORIGIN), new UnicodeString(origin));
         }
+        if (deviceId != null) {
+            map.put(new UnsignedInteger(DEVICE_ID), new UnicodeString(deviceId));
+        }
         return map;
     }
 
     public static CryptoMultiAccounts fromCbor(DataItem dataItem) {
         Map item = (Map) dataItem;
         String origin = null;
+        String deviceId = null;
 
         UnsignedInteger uintMasterFingerprint = (UnsignedInteger) item.get(new UnsignedInteger(MASTER_FINGERPRINT));
         Array keys = (Array) item.get(new UnsignedInteger(KEYS));
@@ -73,8 +92,10 @@ public class CryptoMultiAccounts extends RegistryItem {
         if (item.get(new UnsignedInteger(ORIGIN)) != null) {
             origin = item.get(new UnsignedInteger(ORIGIN)).toString();
         }
-
-        return new CryptoMultiAccounts(uintMasterFingerprint.getValue().toByteArray(), cryptoHDKeys, origin);
+        if (item.get(new UnsignedInteger(DEVICE_ID)) != null) {
+            deviceId = item.get(new UnsignedInteger(DEVICE_ID)).toString();
+        }
+        return new CryptoMultiAccounts(uintMasterFingerprint.getValue().toByteArray(), cryptoHDKeys, origin, deviceId);
     }
 
     @Override
