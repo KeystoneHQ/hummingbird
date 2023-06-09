@@ -5,6 +5,10 @@ import com.sparrowwallet.hummingbird.registry.aptos.AptosSignature;
 import com.sparrowwallet.hummingbird.registry.arweave.ArweaveCryptoAccount;
 import com.sparrowwallet.hummingbird.registry.arweave.ArweaveSignRequest;
 import com.sparrowwallet.hummingbird.registry.arweave.ArweaveSignature;
+import com.sparrowwallet.hummingbird.registry.cardano.CardanoCertKey;
+import com.sparrowwallet.hummingbird.registry.cardano.CardanoSignRequest;
+import com.sparrowwallet.hummingbird.registry.cardano.CardanoSignature;
+import com.sparrowwallet.hummingbird.registry.cardano.CardanoUtxo;
 import com.sparrowwallet.hummingbird.registry.cosmos.CosmosSignRequest;
 import com.sparrowwallet.hummingbird.registry.cosmos.CosmosSignature;
 import com.sparrowwallet.hummingbird.registry.evm.EvmSignRequest;
@@ -73,6 +77,12 @@ public enum RegistryType {
     ARWEAVE_CRYPTO_ACCOUNT("arweave-crypto-account", 5101, ArweaveCryptoAccount.class),
     ARWEAVE_SIGN_REQUEST("arweave-sign-request", 5102, ArweaveSignRequest.class),
     ARWEAVE_SIGNATURE("arweave-signature", 5103, ArweaveSignature.class),
+
+    CARDANO_UTXO("cardano-utxo", 2201, CardanoUtxo.class),
+    CARDANO_SIGN_REQUEST("cardano-utxo", 2202, CardanoSignRequest.class),
+    CARDANO_SIGNATURE("cardano-utxo", 2203, CardanoSignature.class),
+    CARDANO_CERT_KEY("cardano-utxo", 2204, CardanoCertKey.class),
+
     EVM_SIGN_REQUEST("evm-sign-request", 6101, EvmSignRequest.class),
     EVM_SIGNATURE("evm-signature", 6102, EvmSignature.class);
 

@@ -13,6 +13,10 @@ import com.sparrowwallet.hummingbird.registry.aptos.AptosSignature;
 import com.sparrowwallet.hummingbird.registry.arweave.ArweaveCryptoAccount;
 import com.sparrowwallet.hummingbird.registry.arweave.ArweaveSignRequest;
 import com.sparrowwallet.hummingbird.registry.arweave.ArweaveSignature;
+import com.sparrowwallet.hummingbird.registry.cardano.CardanoCertKey;
+import com.sparrowwallet.hummingbird.registry.cardano.CardanoSignRequest;
+import com.sparrowwallet.hummingbird.registry.cardano.CardanoSignature;
+import com.sparrowwallet.hummingbird.registry.cardano.CardanoUtxo;
 import com.sparrowwallet.hummingbird.registry.cosmos.CosmosSignRequest;
 import com.sparrowwallet.hummingbird.registry.cosmos.CosmosSignature;
 import com.sparrowwallet.hummingbird.registry.evm.EvmSignRequest;
@@ -143,6 +147,14 @@ public class UR {
                 return KeyDerivationCall.fromCbor(item);
             } else if (registryType == RegistryType.KEY_DERIVATION_SCHEMA) {
                 return KeyDerivationSchema.fromCbor(item);
+            } else if (registryType == RegistryType.CARDANO_SIGNATURE) {
+                return CardanoSignature.fromCbor(item);
+            } else if (registryType == RegistryType.CARDANO_UTXO) {
+                return CardanoUtxo.fromCbor(item);
+            } else if (registryType == RegistryType.CARDANO_CERT_KEY) {
+                return CardanoCertKey.fromCbor(item);
+            } else if (registryType == RegistryType.CARDANO_SIGN_REQUEST) {
+                return CardanoSignRequest.fromCbor(item);
             }
         } catch (CborException e) {
             throw new InvalidCBORException(e.getMessage());
