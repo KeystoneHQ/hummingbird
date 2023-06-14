@@ -79,9 +79,9 @@ public enum RegistryType {
     ARWEAVE_SIGNATURE("arweave-signature", 5103, ArweaveSignature.class),
 
     CARDANO_UTXO("cardano-utxo", 2201, CardanoUtxo.class),
-    CARDANO_SIGN_REQUEST("cardano-utxo", 2202, CardanoSignRequest.class),
-    CARDANO_SIGNATURE("cardano-utxo", 2203, CardanoSignature.class),
-    CARDANO_CERT_KEY("cardano-utxo", 2204, CardanoCertKey.class),
+    CARDANO_SIGN_REQUEST("cardano-sign-request", 2202, CardanoSignRequest.class),
+    CARDANO_SIGNATURE("cardano-signature", 2203, CardanoSignature.class),
+    CARDANO_CERT_KEY("cardano-cert-key", 2204, CardanoCertKey.class),
 
     EVM_SIGN_REQUEST("evm-sign-request", 6101, EvmSignRequest.class),
     EVM_SIGNATURE("evm-signature", 6102, EvmSignature.class);
