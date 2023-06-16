@@ -142,7 +142,6 @@ public class SuiSignRequest extends RegistryItem {
     public static SuiSignRequest fromCbor(DataItem item) {
         byte[] requestId = null;
         byte[] intentMessage = null;
-        Integer signTypeIndex = null;
         List<CryptoKeypath> derivationPaths = null;
         List<byte[]> addressList = null;
         String origin = null;
@@ -171,7 +170,7 @@ public class SuiSignRequest extends RegistryItem {
                 origin = ((UnicodeString) map.get(uintKey)).getString();
             }
         }
-        if (intentMessage == null || derivationPaths == null || signTypeIndex == null) {
+        if (intentMessage == null || derivationPaths == null) {
             throw new IllegalStateException("required data field is missing");
         }
         return new SuiSignRequest(intentMessage, derivationPaths, requestId, addressList, origin);
