@@ -24,7 +24,7 @@ import com.sparrowwallet.hummingbird.registry.solana.SolSignature;
 import com.sparrowwallet.hummingbird.registry.sui.SuiSignRequest;
 import com.sparrowwallet.hummingbird.registry.sui.SuiSignature;
 import com.sparrowwallet.hummingbird.registry.KeystoneSignRequest;
-
+import com.sparrowwallet.hummingbird.registry.KeystoneSignature;
 public enum RegistryType {
     BYTES("bytes", null, byte[].class),
     CBOR_PNG("cbor-png", null, null),
@@ -87,7 +87,8 @@ public enum RegistryType {
     EVM_SIGN_REQUEST("evm-sign-request", 6101, EvmSignRequest.class),
     EVM_SIGNATURE("evm-signature", 6102, EvmSignature.class),
 
-    KEYSTONE_SIGN_REQUEST("keystone-sign-request", 8101, KeystoneSignRequest.class);
+    KEYSTONE_SIGN_REQUEST("keystone-sign-request", 8101, KeystoneSignRequest.class),
+    KEYSTONE_SIGN_RESULT("keystone-sign-result", 8102, KeystoneSignature.class);
 
     private final String type;
     private final Integer tag;
