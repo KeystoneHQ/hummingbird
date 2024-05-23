@@ -32,7 +32,7 @@ import com.sparrowwallet.hummingbird.registry.solana.SolSignRequest;
 import com.sparrowwallet.hummingbird.registry.solana.SolSignature;
 import com.sparrowwallet.hummingbird.registry.sui.SuiSignRequest;
 import com.sparrowwallet.hummingbird.registry.sui.SuiSignature;
-
+import com.sparrowwallet.hummingbird.registry.KeystoneSignRequest;
 import java.io.ByteArrayOutputStream;
 import java.util.Arrays;
 import java.util.List;
@@ -155,6 +155,8 @@ public class UR {
                 return CardanoCertKey.fromCbor(item);
             } else if (registryType == RegistryType.CARDANO_SIGN_REQUEST) {
                 return CardanoSignRequest.fromCbor(item);
+            } else if (registryType == RegistryType.KEYSTONE_SIGN_REQUEST) {
+                return KeystoneSignRequest.fromCbor(item);
             }
         } catch (CborException e) {
             throw new InvalidCBORException(e.getMessage());
