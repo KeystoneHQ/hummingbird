@@ -19,11 +19,11 @@ public class CardanoUtxo extends RegistryItem {
 
     private final byte[] transactionHash;
     private final int index;
-    private final long value;
+    private final String value;
     private final CryptoKeypath path;
     private final String address;
 
-    public CardanoUtxo(byte[] transactionHash, int index, long value, CryptoKeypath path, String address) {
+    public CardanoUtxo(byte[] transactionHash, int index, String value, CryptoKeypath path, String address) {
         this.transactionHash = transactionHash;
         this.index = index;
         this.value = value;
@@ -39,7 +39,7 @@ public class CardanoUtxo extends RegistryItem {
         return index;
     }
 
-    public long getValue() {
+    public String getValue() {
         return value;
     }
 
@@ -56,7 +56,7 @@ public class CardanoUtxo extends RegistryItem {
         Map map = new Map();
         map.put(new UnsignedInteger(TRANSACTION_HASH), new ByteString(transactionHash));
         map.put(new UnsignedInteger(INDEX), new UnsignedInteger(index));
-        map.put(new UnsignedInteger(VALUE), new UnsignedInteger(value));
+        map.put(new UnsignedInteger(VALUE), new UnicodeString(value));
         DataItem keypath = path.toCbor();
         keypath.setTag(path.getRegistryType().getTag());
         map.put(new UnsignedInteger(PATH), keypath);
@@ -67,7 +67,7 @@ public class CardanoUtxo extends RegistryItem {
     public static CardanoUtxo fromCbor(DataItem item) {
         byte[] transactionHash = null;
         int index = 0;
-        long value = 0;
+        String value = "0";
         CryptoKeypath path = null;
         String address = null;
         Map map = (Map) item;
@@ -82,7 +82,7 @@ public class CardanoUtxo extends RegistryItem {
                 index = ((UnsignedInteger) map.get(uintKey)).getValue().intValue();
             }
             if (intKey == VALUE) {
-                value = ((UnsignedInteger) map.get(uintKey)).getValue().longValue();
+                value = ((UnicodeString) map.get(uintKey)).getString();
             }
             if (intKey == PATH) {
                 path = CryptoKeypath.fromCbor(map.get(uintKey));

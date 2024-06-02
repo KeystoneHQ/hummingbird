@@ -17,20 +17,20 @@ public class CardanoSignRequest extends RegistryItem {
     private static final int REQUEST_ID = 1;
     private static final int SIGN_DATA = 2;
     private static final int UTXOS = 3;
-    private static final int CERT_KEYS = 4;
+    private static final int EXTRA_SIGNERS = 4;
     private static final int ORIGIN = 5;
 
     private final byte[] requestId;
     private final byte[] signData;
     private final List<CardanoUtxo> utxos;
-    private final List<CardanoCertKey> cardanoCertKeys;
+    private final List<CardanoCertKey> extraSigners;
     private final String origin;
 
     public CardanoSignRequest(byte[] requestId, byte[] signData, List<CardanoUtxo> utxos, List<CardanoCertKey> cardanoCertKeys, String origin) {
         this.requestId = requestId;
         this.signData = signData;
         this.utxos = utxos;
-        this.cardanoCertKeys = cardanoCertKeys;
+        this.extraSigners = cardanoCertKeys;
         this.origin = origin;
     }
 
@@ -46,8 +46,8 @@ public class CardanoSignRequest extends RegistryItem {
         return utxos;
     }
 
-    public List<CardanoCertKey> getCardanoCertKeys() {
-        return cardanoCertKeys;
+    public List<CardanoCertKey> getExtraSigners() {
+        return extraSigners;
     }
 
     public String getOrigin() {
@@ -71,12 +71,12 @@ public class CardanoSignRequest extends RegistryItem {
         }
         map.put(new UnsignedInteger(UTXOS), array);
         Array keys = new Array();
-        for (CardanoCertKey cardanoCertKey : cardanoCertKeys) {
+        for (CardanoCertKey cardanoCertKey : extraSigners) {
             DataItem c = cardanoCertKey.toCbor();
             c.setTag(cardanoCertKey.getRegistryType().getTag());
             keys.add(c);
         }
-        map.put(new UnsignedInteger(CERT_KEYS), keys);
+        map.put(new UnsignedInteger(EXTRA_SIGNERS), keys);
         if (origin != null) {
             map.put(new UnsignedInteger(ORIGIN), new UnicodeString(origin));
         }
@@ -107,7 +107,7 @@ public class CardanoSignRequest extends RegistryItem {
                     utxos.add(CardanoUtxo.fromCbor(dataItem));
                 }
             }
-            if (intKey == CERT_KEYS) {
+            if (intKey == EXTRA_SIGNERS) {
                 List<DataItem> array = ((Array) map.get(uintKey)).getDataItems();
                 for (DataItem dataItem : array) {
                     certKeys.add(CardanoCertKey.fromCbor(dataItem));
